@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'blueToothScreen.dart';
 import 'HomePage.dart';
 void main() {
   return runApp(MyApp());

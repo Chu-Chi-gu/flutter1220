@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'blueToothScreen.dart';
+import 'photoPage.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,7 +9,7 @@ class HomePage extends StatefulWidget {
 class _MSHomePage extends State<HomePage> {
   int index=0;
   List<Widget> page = [
-    Container(color: Colors.red),
+    photoPage(),
     Container(color: Colors.yellow),
     blueToothPage(),
     Container(color: Colors.yellow),
