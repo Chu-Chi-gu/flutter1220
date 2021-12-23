@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'HomePage.dart';
+import 'firstPage.dart';
+
 void main() {
-  return runApp(MyApp());
+  runApp(FlutterBlueApp());
 }
-class MyApp extends StatelessWidget  {
+
+class FlutterBlueApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'App 框架',
-      theme: ThemeData(
-        primarySwatch: Colors.blue
-      ),
-      home: HomePage(),
+        home: firstPage(),
     );
   }
 }

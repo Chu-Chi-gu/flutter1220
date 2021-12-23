@@ -10,23 +10,32 @@ class photoPage extends StatefulWidget {
 class _photoPageState extends State<photoPage> {
   //late List<Asset> resultList;
   var _imgPath;
-
+  var r=100, g=100, b=100;
   Widget build(BuildContext context) {
     var photo_size = 400.0;
-    var r=100, g=100, b=100;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Container(
-              height: photo_size,
-              width: photo_size,
-              margin: const EdgeInsets.only(top: 20, right: 10, left: 10, bottom: 10),
-              color: Colors.grey,
-              child: Padding(
+            Listener(
+              child: Container(
+                height: photo_size,
+                width: photo_size,
+                margin: const EdgeInsets.only(top: 20, right: 10, left: 10, bottom: 10),
+                color: Colors.grey,
                 padding: EdgeInsets.all(5.0),
                 child: _ImageView(_imgPath),
               ),
+              onPointerMove: (PointerMoveEvent even){
+                print("onPointMove${even.position.toString()}");
+              },
+              onPointerDown: (PointerDownEvent even) {
+                setState(() {
+                  //r += 10;
+                });
+                print(r);
+              },
             ),
             Align(
               alignment: Alignment.bottomLeft,
@@ -74,11 +83,12 @@ class _photoPageState extends State<photoPage> {
       Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
-          FloatingActionButton(
+          FloatingActionButton.extended(
             onPressed:() {
               getImages_gallery();
             },
-            child: Icon(Icons.image),
+            icon: Icon(Icons.image),
+            label: Text('Gallery'),
           ),
           SizedBox(
             height: 10,
@@ -96,13 +106,19 @@ class _photoPageState extends State<photoPage> {
   void save() {
 
   }
+  Image imageget(imgPath) {
+    var image = Image.file(imgPath);
+    //var x = image.getPixel(0,0);
+    var x = 0;
+    return image;
+  }
   Widget _ImageView(imgPath) {
     if(_imgPath == null) {
       return Center(
         child: Text("請選擇圖片或拍照", style: TextStyle(fontSize: 24),),
       );
     } else {
-      return Image.file(_imgPath);
+      return Image.file(imgPath);
       // Image.file(imgPath);
       //Image.asset(img);
     }
@@ -111,7 +127,7 @@ class _photoPageState extends State<photoPage> {
     final ImagePicker _picker = ImagePicker();
     final XFile? tmp = await _picker.pickImage(source: ImageSource.gallery);
     //var xxx = await MultiImagePicker.pickImages(maxImages: 1);
-    /*var tmp = await MultiImagePicker.pickImages(
+    /*var tmpp = await MultiImagePicker.pickImages(
       //selectedAssets: resultList,
       maxImages: 1,
       enableCamera: true,

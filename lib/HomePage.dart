@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'blueToothScreen.dart';
 import 'photoPage.dart';
+import 'widgets.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -11,8 +12,8 @@ class _MSHomePage extends State<HomePage> {
   List<Widget> page = [
     photoPage(),
     Container(color: Colors.yellow),
-    blueToothPage(),
-    Container(color: Colors.yellow),
+    FlutterBlueApp(),
+    //ScanResultTile(result: null,),
   ];
 
   @override
